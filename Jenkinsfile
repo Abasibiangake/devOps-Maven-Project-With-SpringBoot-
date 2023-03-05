@@ -12,6 +12,5 @@ pipeline {
                 sh 'echo BUILD_ID: $BUILD_ID'
             }
 		}
-
 	}
 }
