@@ -2,9 +2,12 @@ package com.mvc;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import java.time.LocalDateTime;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -51,9 +54,23 @@ public class RegistrationController {
 	}
 	
 	
-	@RequestMapping ("/welcome")
-	public String display(HttpServletRequest request, HttpServletResponse response) {
-		return "devOpsFile";
+	@GetMapping("/welcome")
+	public ModelAndView display(HttpServletRequest request, HttpServletResponse response ) {
+        LocalDateTime now = LocalDateTime.now();
+      //use modelAndView to create a holder for both the model and view in web mvc framework
+      ModelAndView mview = new ModelAndView("devOpsFile");
+      String name = "Abasibiangake James";
+        int hour = now.getHour();
+        String message="";
+        if (hour >= 12 && hour < 18) {
+            message = "Good afternoon " + name;
+        } else if (hour >= 18) {
+            message = "Good evening, <student name (e.g., John)>, "+ name;
+        } else {
+            message = "Good morning, <student name (e.g., John)>, " + name;
+        }
+        mview.addObject("message", message);
+	return mview;
 //        response.setContentType("text/html");
 //        PrintWriter out = response.getWriter();
 //    

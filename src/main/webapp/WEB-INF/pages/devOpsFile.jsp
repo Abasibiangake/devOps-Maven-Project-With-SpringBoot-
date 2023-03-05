@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>Welcome to COMP367</h2>
+<h2>${message}, Welcome to COMP367</h2>
 
 </body>
 </html>
