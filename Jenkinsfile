@@ -1,10 +1,17 @@
 pipeline {
-    agent any
-    stages {
-        stage('Build') {
+	agent none
+
+	triggers {
+		pollSCM 'H/10 * * * *'
+	}
+
+	stages {
+		stage("test: baseline (jdk8)") {
             steps {
-                sh 'mvn clean install'
+                sh 'echo JENKINS_URL: $JENKINS_URL'
+                sh 'echo BUILD_ID: $BUILD_ID'
             }
-        }
-    }
+		}
+
+	}
 }
