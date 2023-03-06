@@ -65,9 +65,9 @@ public class RegistrationController {
         if (hour >= 12 && hour < 18) {
             message = "Good afternoon " + name;
         } else if (hour >= 18) {
-            message = "Good evening, <student name (e.g., John)>, "+ name;
+            message = "Good evening "+ name;
         } else {
-            message = "Good morning, <student name (e.g., John)>, " + name;
+            message = "Good morning " + name;
         }
         mview.addObject("message", message);
 	return mview;
